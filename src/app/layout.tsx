@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { CalSans, PoppinsFont } from '../lib/font';
 import './globals.css';
 import { siteCongig } from '../../config/site';
+import { NextResponse } from 'next/server';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     },
   ],
 };
+
 
 export default function RootLayout({
   children,

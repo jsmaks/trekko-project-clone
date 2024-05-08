@@ -12,7 +12,7 @@
     "fix": "yarn format && yarn lint --fix"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.0.6",
+    "@clerk/nextjs": "^5.0.7",
     "@radix-ui/react-slot": "^1.0.2",
     "autoprefixer": "^10.4.19",
     "cal-sans": "^1.0.1",
