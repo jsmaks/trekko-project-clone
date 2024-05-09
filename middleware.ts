@@ -1,28 +1,10 @@
-import { authMiddleware, redirectToSignIn,auth } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-export default authMiddleware({
-  publicRoutes: ['/'],
-  afterAuth: (auth:any, req:any) => {
-      if (auth.userId && auth.isPublicRoute) {
-        console.log(auth.userId);
-      let path = '/select-org';
-      if (auth.orgId) {
-        path = `organization/${auth.orgId}`;
-      }
-      const orgSelection = new URL(path, req.url);
-      return NextResponse.redirect(orgSelection);
-    }
-    if (!auth.userId && auth.isPublicRoute) {
-      return redirectToSignIn({ returnBackUrl: req.url });
-    }
-    if (auth.userId && !auth.orgId && req.nextUrl.pathname !== '/select-org') {
-      const orgSelection = new URL('/select-org', req.url);
-      return NextResponse.redirect(orgSelection);
-    }
-  },
+const isProtectedRoute = createRouteMatcher(['/des(.*)',]);
+export default clerkMiddleware((auth, req) => {
+  if (isProtectedRoute(req)) auth().protect();
 });
 
 export const config = {
-  matcher: ['/((?!.+.[w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };

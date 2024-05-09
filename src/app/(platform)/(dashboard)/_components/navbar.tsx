@@ -1,5 +1,6 @@
 import { Logo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
+
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs';
 import { Plus } from 'lucide-react';
 
@@ -11,6 +12,7 @@ const Navbar = () => {
         <div className="md:flex">
           <Logo />
         </div>
+
         <Button size="sm" className="hidden h-auto rounded-sm px-2 py-1.5 md:block">
           Create
         </Button>

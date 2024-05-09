@@ -1,10 +1,9 @@
-import { OrganizationSwitcher } from '@clerk/nextjs';
-
-const OrganizationIdPage = () => {
+const OrganizationIdPage = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-          {/* <OrganizationSwitcher hidePersonal /> */}
-          Organization Page
+      Organization Page
+      <div>{children}</div>
+  
     </div>
   );
 };
