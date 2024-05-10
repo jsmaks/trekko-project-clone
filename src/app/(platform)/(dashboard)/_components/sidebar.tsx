@@ -18,9 +18,13 @@ interface SidebarProps {
 export const Sidebar = ({ storageKey }: SidebarProps) => {
   storageKey = 't-sidebar-state';
 
-  const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(storageKey, {});
+  const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(
+    storageKey,
+    {}
+  );
 
-  const { organization: activeOrganization, isLoaded: isLoadedOrg } = useOrganization();
+  const { organization: activeOrganization, isLoaded: isLoadedOrg } =
+    useOrganization();
 
   const { userMemberships, isLoaded: isLoadedOrgList } = useOrganizationList({
     userMemberships: {
@@ -48,7 +52,16 @@ export const Sidebar = ({ storageKey }: SidebarProps) => {
   if (!isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading) {
     return (
       <>
-        <Skeleton />
+        <div className="mb-2 flex items-center justify-between">
+          <Skeleton className="h-10 w-[50%]" />
+          <Skeleton className="h-10 w-10" />
+        </div>
+        <div className="space-y-2">
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+        </div>
       </>
     );
   }
@@ -56,13 +69,23 @@ export const Sidebar = ({ storageKey }: SidebarProps) => {
     <>
       <div className="intems-center mb-1 flex text-xs font-medium">
         <span className="pl-4">Workspaces</span>
-        <Button asChild type="button" size={'icon'} variant={'ghost'} className="ml-auto">
+        <Button
+          asChild
+          type="button"
+          size={'icon'}
+          variant={'ghost'}
+          className="ml-auto"
+        >
           <Link href="/select-org">
             <Plus className="h-4 w-4" />
           </Link>
         </Button>
       </div>
-      <Accordion className="space-y-2" type="multiple" defaultValue={defaultAccordionValue}>
+      <Accordion
+        className="space-y-2"
+        type="multiple"
+        defaultValue={defaultAccordionValue}
+      >
         {userMemberships.data.map(({ organization }) => (
           <NavItem
             key={organization.id}
