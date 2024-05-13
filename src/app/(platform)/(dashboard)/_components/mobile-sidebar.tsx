@@ -1,35 +1,22 @@
 'use client';
 
-import {
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { useMobileSidebar } from '../../../../../hooks/use-mobile-sidebar';
 import { Button } from '@/components/ui/button';
 
 import { Menu } from 'lucide-react';
-import {
-  Sheet,
-  SheetContent,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Sidebar } from './sidebar';
 
 export const MobileSideBar = () => {
   const pathname = usePathname();
-  const [isMounted, setIsMounted] =
-    useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  const isOpen = useMobileSidebar(
-    state => state.isOpen
-  );
-  const onOpen = useMobileSidebar(
-    state => state.onOpen
-  );
-  const onClose = useMobileSidebar(
-    state => state.onClose
-  );
+  const isOpen = useMobileSidebar(state => state.isOpen);
+  const onOpen = useMobileSidebar(state => state.onOpen);
+  const onClose = useMobileSidebar(state => state.onClose);
 
   useEffect(() => {
     setIsMounted(true);
@@ -44,20 +31,14 @@ export const MobileSideBar = () => {
   return (
     <>
       <Button
-        className="block md:hidden mr-2"
+        className="mr-2 block md:hidden"
         onClick={onOpen}
         variant={'ghost'}
       >
         <Menu className="h-4 w-4 " />
       </Button>
-      <Sheet
-        open={isOpen}
-        onOpenChange={onClose}
-      >
-        <SheetContent
-          side={'left'}
-          className="p-2 pt-10"
-        >
+      <Sheet open={isOpen} onOpenChange={onClose}>
+        <SheetContent side={'left'} className="p-2 pt-10">
           <Sidebar storageKey="t-sidebat-mobel-state" />
         </SheetContent>
       </Sheet>

@@ -20,10 +20,11 @@ export type Organization = {
   name: string;
 };
 
+/*eslint-disable */
 interface NavItemProps {
   isExpanded: boolean;
   isActive: boolean;
-  organization: any;
+  organization: Organization;
   onExpand: (id: string) => void;
 }
 export const NavItem = ({
@@ -107,7 +108,7 @@ export const NavItem = ({
 NavItem.Skeleton = function SkeletonNavItem() {
   return (
     <div className=" flex items-center gap-x-2">
-      <div className="w-10 relative h-10 shrink-0">
+      <div className="relative h-10 w-10 shrink-0">
         <Skeleton className="absolute h-full w-full" />
       </div>
       <Skeleton className="h-10 w-full" />

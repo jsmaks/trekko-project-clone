@@ -22,12 +22,13 @@ const MarketingPage = () => {
       </div>
       <div
         className={cn(
-          'mx-auto mt-4 max-w-xs text-center text-sm text-neutral-400 md:max-w-2xl md:text-xl font-poppins'
+          'font-poppins mx-auto mt-4 max-w-xs text-center text-sm text-neutral-400 md:max-w-2xl md:text-xl'
         )}
       >
         {' '}
-        Collaborate , manage projects, and reach new producrivity peaks. Form hight rises to the
-        home office, the way your team works is unique - accomplish it all with Taskify.
+        Collaborate , manage projects, and reach new producrivity peaks. Form
+        hight rises to the home office, the way your team works is unique -
+        accomplish it all with Taskify.
       </div>
       <Button className="mt-6" size="lg" asChild>
         <Link href="/">Get Taskify for free</Link>

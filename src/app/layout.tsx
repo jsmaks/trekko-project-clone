@@ -4,6 +4,7 @@ import { CalSans, PoppinsFont } from '../lib/font';
 import './globals.css';
 import { siteCongig } from '../../config/site';
 
+import { ClerkProvider } from '@clerk/nextjs';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,12 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <ClerkProvider>
+    <ClerkProvider>
       <html lang="en">
-        <body className={`${CalSans.variable} ${inter.className} ${PoppinsFont.variable}`}>
+        <body
+          className={`${CalSans.variable} ${inter.className} ${PoppinsFont.variable}`}
+        >
           {children}
         </body>
       </html>
-    // </ClerkProvider>
+    </ClerkProvider>
   );
 }
