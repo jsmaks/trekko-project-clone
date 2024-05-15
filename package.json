@@ -12,13 +12,17 @@
     "test": "yarn check-format && yarn lint && yarn format",
     "fix": "yarn format && yarn lint --fix",
     "test-all": "yarn check-format && yarn lint && yarn build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start-db": "docker start trello_mysql || docker run --name trello_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest",
+    "stop-db": "docker stop trello_mysql"
   },
   "dependencies": {
     "-": "^0.0.1",
     "@clerk/nextjs": "^5.0.8",
+    "@prisma/client": "^5.14.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/themes": "^3.0.3",
@@ -37,6 +41,7 @@
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "^3.1.0",
+    "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
@@ -47,7 +52,7 @@
     "eslint-config-next": "14.2.3",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
-    "prisma": "^5.13.0",
+    "prisma": "^5.14.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

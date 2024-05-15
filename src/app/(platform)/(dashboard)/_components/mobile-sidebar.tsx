@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-import { useMobileSidebar } from '../../../../../hooks/use-mobile-sidebar';
+import { useMobileSidebar } from '../../../../hooks/use-mobile-sidebar';
 import { Button } from '@/components/ui/button';
 
 import { Menu } from 'lucide-react';
