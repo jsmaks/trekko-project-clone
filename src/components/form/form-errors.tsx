@@ -18,10 +18,8 @@ export const FormErrors = ({ id, errors }: FormErrorsProps) => {
         <div
           key={error}
           className="flex items-center rounded-sm border border-rose-500 bg-rose-500/10 p-2 font-medium"
-          >
-              <XCircle className="w-4 h-4 mr-2" />
-          {' '}
-          {error}
+        >
+          <XCircle className="mr-2 h-4 w-4" /> {error}
         </div>
       ))}
     </div>

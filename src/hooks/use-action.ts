@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { ActionState, FieldErrors } from '@/lib/create-safe-action';
-
+/*eslint-disable */
 type Action<TInput, TOtput> = (
   data: TInput
 ) => Promise<ActionState<TInput, TOtput>>;

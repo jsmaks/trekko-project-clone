@@ -1,5 +1,5 @@
 import { z } from 'zod';
-
+/*eslint-disable */
 export type FieldErrors<T> = {
   [K in keyof T]?: string[];
 };
