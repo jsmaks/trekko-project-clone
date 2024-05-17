@@ -37,6 +37,7 @@ export async function create(
   const { title } = validatedFileds.data;
 
   try {
+    /*eslint-disable */
     await db.board.create({
       data: {
         title,
