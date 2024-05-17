@@ -75,9 +75,11 @@ export const NavItem = ({
             <div className="relative h-7 w-7">
               <Image
                 fill
+                sizes="auto"
                 src={organization.imageUrl}
                 alt={'Organization'}
                 className="rounded-sm object-cover"
+                loading="eager"
               />
             </div>
             <span className="text-sm font-medium">{organization.name}</span>
