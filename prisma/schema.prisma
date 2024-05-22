@@ -32,6 +32,39 @@ imageFullUrl  String @db.Text
 imageLinkHTML String @db.Text
 imageUserName String @db.Text
 
+list          List[]
+
 createdAt     DateTime @default(now())
 updatedAt     DateTime @updatedAt
+}
+
+model List {
+  id          String @id @default(cuid())
+  title       String
+  order       Int
+
+  boardId     String
+  board       Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  cards       Card[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([boardId])
+}
+
+model Card { // Определяет модель "Card". Модель в Prisma представляет собой таблицу в вашей базе данных.
+  id          String @id @default(cuid()) 
+  title       String 
+  order       Int 
+  description String? @db.Text // Определяет необязательное поле "description" типа String. "@db.Text" указывает, что это поле может содержать большие объемы текста.
+
+  listId      String 
+  list        List @relation(fields: [listId], references: [id], onDelete: Cascade) // Определяет отношение с моделью "List". "@relation" указывает, что это поле связано с полем "id" в модели "List". "onDelete: Cascade" означает, что при удалении списка, все связанные с ним карточки также будут удалены.
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([listId]) // Создает индекс для поля "listId". Индексы улучшают производительность при поиске по этому полю.
 }
