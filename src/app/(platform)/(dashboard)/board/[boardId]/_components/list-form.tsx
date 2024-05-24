@@ -79,7 +79,12 @@ const ListForm = () => {
             className="hover:borer-input h-7 border-transparent px-2 py-1 text-sm font-medium transition focus:border-input"
             placeholder="Enter list title..."
           />
-          <input hidden value={params.boardId} name="boardId" />
+          <input
+            hidden
+            value={params.boardId}
+            name="boardId"
+            onChange={() => {}}
+          />
           <div className="flex items-center gap-x-1">
             <FormSubmit>Add list</FormSubmit>
             <Button onClick={disableEditing} size={'sm'} variant={'ghost'}>
