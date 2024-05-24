@@ -1,5 +1,8 @@
 'use client';
 
+import { toast } from 'sonner';
+import { ElementRef, useRef } from 'react';
+
 import { List } from '@prisma/client';
 import {
   Popover,
@@ -14,8 +17,9 @@ import { FormSubmit } from '@/components/form/form-submit';
 import { Separator } from '@/components/ui/separator';
 
 import { useAction } from '@/hooks/use-action';
+
 import { deleteList } from '@/actions/delete-list';
-import { toast } from 'sonner';
+import { copyList } from '@/actions/copy-list';
 
 interface ListOptionsProps {
   data: List;
@@ -23,20 +27,43 @@ interface ListOptionsProps {
 }
 
 const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
+  const closeRef = useRef<ElementRef<'button'>>(null);
+
   const { execute: executeDelete } = useAction(deleteList, {
     onSuccess: () => {
       toast.success(`List ${data.title} deleted`);
+      closeRef.current?.click();
     },
     onError: error => {
       toast.error(error);
     },
   });
+    const { execute: executeCopy } = useAction(copyList, {
+      onSuccess: () => {
+          console.log('121212');
+        toast.success(`List ${data.title} copied`);
+        closeRef.current?.click();
+      },
+      onError: error => {
+        console.log('121212');
+        toast.error(error);
+      },
+    });
 
   const onDelete = (formData: FormData) => {
     const id = formData.get('id') as string;
     const boardId = formData.get('boardId') as string;
 
     executeDelete({ id: id, boardId: boardId });
+  };
+
+  const onCopy = (formData: FormData) => {
+    const id = formData.get('id') as string;
+    const boardId = formData.get('boardId') as string;
+
+ 
+
+    executeCopy({ id: id, boardId: boardId });
   };
   return (
     <Popover>
@@ -49,7 +76,7 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
         <div className="pb-4 text-center text-sm font-medium text-neutral-600">
           List Actions
         </div>
-        <PopoverClose asChild>
+        <PopoverClose ref={closeRef} asChild>
           <Button
             className="absolute right-2 top-2 h-4 w-auto p-2"
             variant={'ghost'}
@@ -65,11 +92,11 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
         >
           Add card...
         </Button>
-        <form>
+        <form action={onCopy}>
           <input hidden name="id" id="id" value={data.id} onChange={() => {}} />
           <input
             hidden
-            name="id"
+            name="boardId"
             id="boardId"
             value={data.boardId}
             onChange={() => {}}
