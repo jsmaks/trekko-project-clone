@@ -10,7 +10,6 @@ import { CopyList } from './schema';
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-
   if (!userId || !orgId) {
     return {
       error: 'Unauthorized',
@@ -33,7 +32,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         cards: true,
       },
     });
-  
 
     if (!listToCopy) {
       return {

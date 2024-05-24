@@ -38,17 +38,17 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
       toast.error(error);
     },
   });
-    const { execute: executeCopy } = useAction(copyList, {
-      onSuccess: () => {
-          console.log('121212');
-        toast.success(`List ${data.title} copied`);
-        closeRef.current?.click();
-      },
-      onError: error => {
-        console.log('121212');
-        toast.error(error);
-      },
-    });
+  const { execute: executeCopy } = useAction(copyList, {
+    onSuccess: () => {
+      console.log('121212');
+      toast.success(`List ${data.title} copied`);
+      closeRef.current?.click();
+    },
+    onError: error => {
+      console.log('121212');
+      toast.error(error);
+    },
+  });
 
   const onDelete = (formData: FormData) => {
     const id = formData.get('id') as string;
@@ -60,8 +60,6 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
   const onCopy = (formData: FormData) => {
     const id = formData.get('id') as string;
     const boardId = formData.get('boardId') as string;
-
- 
 
     executeCopy({ id: id, boardId: boardId });
   };

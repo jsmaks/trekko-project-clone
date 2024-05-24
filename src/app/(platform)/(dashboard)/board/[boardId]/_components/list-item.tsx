@@ -33,16 +33,12 @@ const ListItem = ({ data, index }: ListItemProps) => {
         <ListHeader onAddCard={enableEditing} data={data} />
         <ol
           className={cn(
-            'gap-y-2 mx-1 flex flex-col px-1 py-0.5',
+            'mx-1 flex flex-col gap-y-2 px-1 py-0.5',
             data.cards.length > 0 ? 'mt-2' : 'mt-0'
           )}
         >
-          {data.cards.map((card,index)=> (
-            <CardItem
-              index={index}
-              key={card.id}
-              data={card}
-            />
+          {data.cards.map((card, index) => (
+            <CardItem index={index} key={card.id} data={card} />
           ))}
         </ol>
         <CardForm

@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 
-import { KeyboardEventHandler, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { useFormStatus } from 'react-dom';
 
 import { Label } from '../ui/label';
@@ -20,6 +20,7 @@ interface FormTextareaProps {
   onBlur?: () => void;
   onClick?: () => void;
   //   onKeyDown?: () => KeyboardEventHandler<HTMLTextAreaElement> | undefined;
+  /*eslint-disable-next-line*/
   onKeyDown?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
   defaultValue?: string;
 }
