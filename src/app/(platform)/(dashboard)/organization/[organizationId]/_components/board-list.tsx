@@ -10,7 +10,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export const BoardList = async () => {
   const { orgId } = auth();
-  
+
   if (!orgId) return redirect('/select-org');
 
   const boards = await db.board.findMany({

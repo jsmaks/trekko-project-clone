@@ -45,7 +45,6 @@ const ListItem = ({ data, index }: ListItemProps) => {
             <Droppable droppableId={data.id} type="card">
               {provided => (
                 <ol
-                  
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                   className={cn(
