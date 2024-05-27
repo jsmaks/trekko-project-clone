@@ -40,12 +40,10 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
   });
   const { execute: executeCopy } = useAction(copyList, {
     onSuccess: () => {
-      console.log('121212');
       toast.success(`List ${data.title} copied`);
       closeRef.current?.click();
     },
     onError: error => {
-      console.log('121212');
       toast.error(error);
     },
   });
