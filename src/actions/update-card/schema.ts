@@ -13,14 +13,16 @@ export const UpdateCardSchema = z.object({
       })
       .max(1000, { message: 'Description is too long' })
   ),
-  title: z
-    .string({
-      required_error: 'Title is required',
-      invalid_type_error: 'Title is required',
-    })
-    .min(3, {
-      message: 'Title is too short',
-    })
-    .max(100, { message: 'Title is too long' }),
+  title: z.optional(
+    z
+      .string({
+        required_error: 'Title is required',
+        invalid_type_error: 'Title is required',
+      })
+      .min(3, {
+        message: 'Title is too short',
+      })
+      .max(100, { message: 'Title is too long' })
+  ),
   id: z.string(),
 });
