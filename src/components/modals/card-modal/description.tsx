@@ -66,6 +66,7 @@ const Description = ({ data }: DescrciptionProps) => {
     //EXECUTE THE API CALL
 
     execute({ id: data.id, description: description, boardId: boardId });
+    console.log(data.description);
   };
 
   return (
