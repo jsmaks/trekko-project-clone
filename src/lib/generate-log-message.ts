@@ -13,7 +13,7 @@ export const generateLogMessage = (log: AuditLog) => {
     case ACTION.DELETE:
       return `deleted ${entityType.toLowerCase()} "${entityTitle}"`;
 
-    default :
+    default:
       return `unknown action ${entityType.toLowerCase()} "${entityTitle}"`;
   }
 };
