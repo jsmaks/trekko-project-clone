@@ -44,8 +44,8 @@ export const FormPopover = ({
       router.push(`/board/${data.id}`);
     },
     onError(error) {
-      console.error({ error });
-      toast.error('Failed to create board');
+     
+      toast.error(error);
     },
   });
 
