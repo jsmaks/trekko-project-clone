@@ -9,8 +9,7 @@ import { HelpCircle, User2 } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { MAX_FREE_BOARDS } from '@/constants/board';
 import { getAvailableCount } from '@/lib/org-limit';
-
-
+import { checkSubscription } from '@/lib/subscription';
 
 export const BoardList = async () => {
   const { orgId } = auth();
@@ -27,6 +26,9 @@ export const BoardList = async () => {
   });
 
   const availableCount = await getAvailableCount();
+  const isPro = await checkSubscription();
+  //stripe login
+  //stripe listen --forward-to localhost:3000/api/webhook
 
   return (
     <div className="space-y-4">
@@ -56,8 +58,9 @@ export const BoardList = async () => {
             Create new board
             <div className="text-sm">
               <span>
-
-                {`${MAX_FREE_BOARDS - availableCount} remaining`}
+                {isPro
+                  ? 'Unlimited'
+                  : `${MAX_FREE_BOARDS - availableCount} remaining`}
               </span>
               <Hint
                 sideOffset={40}
