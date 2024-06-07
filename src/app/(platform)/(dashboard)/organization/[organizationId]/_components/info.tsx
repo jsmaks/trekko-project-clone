@@ -5,7 +5,11 @@ import { useOrganization } from '@clerk/nextjs';
 import { CreditCard } from 'lucide-react';
 import Image from 'next/image';
 
-export const Info = () => {
+interface InfoProps {
+  isPro:boolean
+}
+
+export const Info = ({ isPro }: InfoProps) => {
   const { organization, isLoaded } = useOrganization();
 
   if (!isLoaded) {
@@ -27,7 +31,7 @@ export const Info = () => {
         <div className="text-xl font-semibold">{organization?.name}</div>
         <div className="fle items-center text-xs text-muted-foreground">
           <CreditCard className="mr-1 h-3 w-3" />
-          Free
+          {isPro ? 'Pro' : 'Free'}
         </div>
       </div>
     </div>
