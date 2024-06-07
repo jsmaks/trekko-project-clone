@@ -46,7 +46,6 @@ export const FormPopover = ({
       router.push(`/board/${data.id}`);
     },
     onError(error) {
-     
       toast.error(error);
       proModal.onOpen();
     },

@@ -1,11 +1,9 @@
 'use server';
 
 import { db } from '@/lib/db';
-import { ACTION, ENTITY_TYPE } from '@prisma/client';
 
 import { InputType, ReturnType } from './types';
 import { createSafeAction } from '@/lib/create-safe-action';
-import { createAuditLog } from '@/lib/create-audit-log';
 
 import { revalidatePath } from 'next/cache';
 import { auth, currentUser } from '@clerk/nextjs/server';
@@ -13,7 +11,7 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 import { StripeRedirect } from './schema';
 import { absoluteUrl } from '@/lib/utils';
 import { stripe } from '@/lib/stripe';
-
+//eslint-disable-next-line
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
   const user = await currentUser();

@@ -12,16 +12,16 @@ export const ProModal = () => {
   const proModal = useProModal();
 
   const { execute, isLoading } = useAction(stripeRedirect, {
-    onSuccess: (data) => {
-      window.location.href = data
+    onSuccess: data => {
+      window.location.href = data;
     },
-    onError: (error) => {
-      toast.error(error)
+    onError: error => {
+      toast.error(error);
     },
   });
   const onClick = () => {
     execute({});
-  }
+  };
   return (
     <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
       <DialogContent className="max-w-md overflow-hidden p-0">
@@ -47,7 +47,8 @@ export const ProModal = () => {
             disabled={isLoading}
             onClick={onClick}
             className="w-full"
-            variant={'primary'}>
+            variant={'primary'}
+          >
             Upgrade to Pro
           </Button>
         </div>
