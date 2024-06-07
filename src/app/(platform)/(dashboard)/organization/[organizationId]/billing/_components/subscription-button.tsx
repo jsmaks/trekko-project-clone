@@ -1,7 +1,7 @@
 'use client';
 
 import { stripeRedirect } from '@/actions/stripe-redirect';
-import { ProModal } from '@/components/modals/pro-modal';
+
 import { Button } from '@/components/ui/button';
 import { useAction } from '@/hooks/use-action';
 import { useProModal } from '@/hooks/use-pro-modal';
