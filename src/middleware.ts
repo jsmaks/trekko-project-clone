@@ -10,7 +10,9 @@ const isProtectedRoute = createRouteMatcher([
 export default clerkMiddleware((auth, request) => {
   const { userId, orgId } = auth();
 
-
+  if (userId && !orgId) {
+    return NextResponse.redirect(new URL(`/select-org'`));
+  }
 
   // Если пользователь зарегистрирован (userId существует) и у него есть orgId, редиректим на /organization/${orgId}
   if (userId && orgId) {
@@ -23,8 +25,6 @@ export default clerkMiddleware((auth, request) => {
   if (userId && !orgId && !request.nextUrl.pathname.startsWith('/select-org')) {
     return NextResponse.redirect(new URL('/select-org', request.url));
   }
-
-
 
   if (isProtectedRoute(request)) {
     auth().protect();
