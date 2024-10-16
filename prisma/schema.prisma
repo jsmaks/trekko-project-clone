@@ -26,8 +26,8 @@ model Board {
 id            String @id @default(cuid())
 orgId         String
 title         String
-imageId       String
-imageThumbUrl String @db.Text
+imageId       String // Это может иметь ограничение по длине в зависимости от базы данных varchar(255)
+imageThumbUrl String @db.Text // Это поле может содержать большие объемы текста
 imageFullUrl  String @db.Text
 imageLinkHTML String @db.Text
 imageUserName String @db.Text
