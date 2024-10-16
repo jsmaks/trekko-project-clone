@@ -1,10 +1,24 @@
+"use client";
 import { Button } from '@/components/ui/button';
 import { Medal } from 'lucide-react';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
+import { auth } from '@clerk/nextjs/server';
+
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const MarketingPage = () => {
+  // const { userId, orgId } = auth();
+  // const router = useRouter();
+
+  // useEffect(() => {
+  //   if (userId && orgId) {
+  //     router.push(`/organization/${orgId}`);
+  //   }
+  // }, [userId, orgId, router]);
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="font-colsans flex flex-col items-center justify-center">
