@@ -16,11 +16,11 @@ export default clerkMiddleware((auth, request) => {
   // }
 
   // Если пользователь зарегистрирован (userId существует) и у него есть orgId, редиректим на /organization/${orgId}
-  if (userId && orgId) {
-    return NextResponse.redirect(
-      new URL(`/organization/${orgId}`, request.url)
-    );
-  }
+  // if (userId && orgId) {
+  //   return NextResponse.redirect(
+  //     new URL(`/organization/${orgId}`, request.url)
+  //   );
+  // }
 
   // Если пользователь зарегистрирован (userId существует), но это не страница /select-org и нет orgId, редиректим на /select-org
   if (userId && !orgId && !request.nextUrl.pathname.startsWith('/select-org')) {
